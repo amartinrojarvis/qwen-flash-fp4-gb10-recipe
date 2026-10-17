@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "date": "2026-10-17",
+  "endpoint": "local vLLM current profile",
+  "model_alias": "vllmcritic",
+  "context_limit_total_tokens": 200000,
+  "results": [
+    {
+      "source": "c4_32768_residency_not_proven",
+      "label": "c4_32768",
+      "status": "FAIL",
+      "classification": "RESIDENCY_NOT_PROVEN",
+      "concurrency_configured": 4,
+      "actual_prompt_tokens": [
+        32768,
+        32768,
+        32768,
+        32768
+      ],
+      "output_reserve_tokens": 256,
+      "wall_s": 55.209056991006946,
+      "aggregate_e2e_output_tps": 5.48822994838249,
+      "decode_common_interval_s": -3.89793464099057,
+      "decode_interval_same_sample_count": 0,
+      "request_metrics": [
+        {
+          "ttft_s": 31.25852890202077,
+          "e2e_output_tps": 1.42633127823402,
+          "decode_tps_approx": 3.3442655524642673,
+          "input_tokens": 32768,
+          "output_tokens": 77,
+          "semantic_pass": false,
+          "status": "FAIL"
+        },
+        {
+          "ttft_s": 53.673100407992024,
+          "e2e_output_tps": 1.3949170298531153,
+          "decode_tps_approx": 49.775173628785325,
+          "input_tokens": 32768,
+          "output_tokens": 77,
+          "semantic_pass": false,
+          "status": "FAIL"
+        },
+        {
+          "ttft_s": 14.722566696000285,
+          "e2e_output_tps": 1.5469346454387363,
+          "decode_tps_approx": 2.1681701789375842,
+          "input_tokens": 32768,
+          "output_tokens": 77,
+          "semantic_pass": false,
+          "status": "FAIL"
+        },
+        {
+          "ttft_s": 44.70405211500474,
+          "e2e_output_tps": 1.3192750156827664,
+          "decode_tps_approx": 7.193007232880583,
+          "input_tokens": 32768,
+          "output_tokens": 72,
+          "semantic_pass": true,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "source": "ladder_65536",
+      "label": "c1_65536",
+      "status": "PASS",
+      "classification": "PASS",
+      "concurrency_configured": 1,
+      "actual_prompt_tokens": [
+        65536
+      ],
+      "output_reserve_tokens": 256,
+      "wall_s": 27.58809856500011,
+      "aggregate_e2e_output_tps": 2.791058608790341,
+      "decode_common_interval_s": 1.1780726390134078,
+      "decode_interval_same_sample_count": 5,
+      "request_metrics": [
+        {
+          "ttft_s": 26.40241071098717,
+          "e2e_output_tps": 2.791744203890412,
+          "decode_tps_approx": 64.51215101952218,
+          "input_tokens": 65536,
+          "output_tokens": 77,
+          "semantic_pass": true,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "source": "ladder_65536",
+      "label": "c2_65536",
+      "status": "FAIL",
+      "classification": "RESIDENCY_NOT_PROVEN",
+      "concurrency_configured": 2,
+      "actual_prompt_tokens": [
+        65536,
+        65536
+      ],
+      "output_reserve_tokens": 256,
+      "wall_s": 55.074975001014536,
+      "aggregate_e2e_output_tps": 2.796188286915485,
+      "decode_common_interval_s": 0.21807765398989432,
+      "decode_interval_same_sample_count": 1,
+      "request_metrics": [
+        {
+          "ttft_s": 53.76588776599965,
+          "e2e_output_tps": 1.398282141694543,
+          "decode_tps_approx": 58.424315700225605,
+          "input_tokens": 65536,
+          "output_tokens": 77,
+          "semantic_pass": true,
+          "status": "PASS"
+        },
+        {
+          "ttft_s": 28.076548778975848,
+          "e2e_output_tps": 1.4263270709058031,
+          "decode_tps_approx": 2.9335229001445624,
+          "input_tokens": 65536,
+          "output_tokens": 77,
+          "semantic_pass": true,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "source": "c1_198000",
+      "label": "c1_198000",
+      "status": "PASS",
+      "classification": "PASS",
+      "concurrency_configured": 1,
+      "actual_prompt_tokens": [
+        198000
+      ],
+      "output_reserve_tokens": 1024,
+      "wall_s": 84.77974632699625,
+      "aggregate_e2e_output_tps": 0.8492594413091937,
+      "decode_common_interval_s": 1.132707256008871,
+      "decode_interval_same_sample_count": 5,
+      "request_metrics": [
+        {
+          "ttft_s": 83.63675078499364,
+          "e2e_output_tps": 0.849339292816052,
+          "decode_tps_approx": 62.681685513493306,
+          "input_tokens": 198000,
+          "output_tokens": 72,
+          "semantic_pass": true,
+          "status": "PASS"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Qwen Flash FP4 on GB10: 4 × 200K vLLM recipe
 
-Portable reconstruction of the **observed effective 200K profile**, distributed without weights, caches, credentials or host identities. Measured results and their limits are recorded in [results.md](results.md). It is a local-export launcher, not a Hugging Face download recipe and not a production deployment instruction.
+Portable reconstruction of the **observed effective 200K profile**, distributed without weights, caches, credentials or host identities. Measured results and their limits are recorded in [results.md](results.md) and the [long-context campaign](results-long-context-2026-10-17.md). It is a local-export launcher, not a Hugging Face download recipe and not a production deployment instruction.
 
 ## What is pinned
 

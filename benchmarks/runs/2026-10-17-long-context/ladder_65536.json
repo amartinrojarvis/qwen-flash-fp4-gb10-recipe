@@ -1,0 +1,731 @@
+{
+  "schema": 2,
+  "run": "long-context-ladder-20261017",
+  "server": "local vLLM current profile",
+  "model": "vllmcritic",
+  "context_limit_total_tokens": 200000,
+  "plans": [
+    {
+      "label": "c1_65536",
+      "concurrency_configured": 1,
+      "target_prompt_tokens": 65536,
+      "output_reserve_tokens": 256,
+      "total_limit": 200000,
+      "actual_prompt_tokens": [
+        65536
+      ],
+      "prompt_sha256": [
+        "79548458e8cba18a642c3389271f07a38aa1dcafc3ff84ae3cdf0c2f4389bb32"
+      ],
+      "wall_s": 27.58809856500011,
+      "aggregate_e2e_output_tps": 2.791058608790341,
+      "resident_same_sample_count": 118,
+      "decode_common_interval_s": 1.1780726390134078,
+      "decode_interval_same_sample_count": 5,
+      "requests": [
+        {
+          "done": true,
+          "usage": {
+            "prompt_tokens": 65536,
+            "total_tokens": 65613,
+            "completion_tokens": 77,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "finish_reason": "stop",
+          "first_visible_s": 26.40241071098717,
+          "last_visible_s": 27.580483350000577,
+          "visible_chunks": 20,
+          "visible_text": "```json\n{\n  \"markers\": [\n    \"CANARY_5_0_65021594\",\n    \"CANARY_50_0_65021594\",\n    \"CANARY_95_0_65021594\"\n  ]\n}\n```",
+          "name": "c1_65536_lane0",
+          "http_status": 200,
+          "elapsed_s": 27.581323493999662,
+          "input_tokens": 65536,
+          "output_tokens": 77,
+          "cached_tokens": null,
+          "semantic_pass": true,
+          "output_tps_end_to_end": 2.791744203890412,
+          "decode_tps_approx": 64.51215101952218,
+          "metric_delta": {
+            "vllm:spec_decode_num_draft_tokens_total": 57.0,
+            "vllm:spec_decode_num_accepted_tokens_total": 57.0,
+            "vllm:num_requests_running": 0.0,
+            "vllm:num_requests_waiting": 0.0,
+            "vllm:num_requests_waiting_by_reason": 0.0,
+            "vllm:kv_cache_usage_perc": 0.0,
+            "vllm:prefix_cache_queries_total": 65536.0,
+            "vllm:prefix_cache_hits_total": 0.0,
+            "vllm:external_prefix_cache_queries_total": 0.0,
+            "vllm:external_prefix_cache_hits_total": 0.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:num_preemptions_created": 0.0,
+            "vllm:request_num_preemptions_bucket": 8.0,
+            "vllm:request_num_preemptions_count": 1.0,
+            "vllm:request_num_preemptions_sum": 0.0,
+            "vllm:request_num_preemptions_created": 0.0
+          },
+          "status": "PASS"
+        }
+      ],
+      "pre_state": {
+        "models_http_status": 200,
+        "models": {
+          "object": "list",
+          "data": [
+            {
+              "id": "vllmcritic",
+              "object": "model",
+              "created": 1792271457,
+              "owned_by": "vllm",
+              "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+              "parent": null,
+              "max_model_len": 200000,
+              "permission": [
+                {
+                  "id": "modelperm-b15a27009c3cd8b7",
+                  "object": "model_permission",
+                  "created": 1792271457,
+                  "allow_create_engine": false,
+                  "allow_sampling": true,
+                  "allow_logprobs": true,
+                  "allow_search_indices": false,
+                  "allow_view": true,
+                  "allow_fine_tuning": false,
+                  "organization": "*",
+                  "group": null,
+                  "is_blocking": false
+                }
+              ]
+            },
+            {
+              "id": "Qwen3.8-Flash-Next",
+              "object": "model",
+              "created": 1792271457,
+              "owned_by": "vllm",
+              "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+              "parent": null,
+              "max_model_len": 200000,
+              "permission": [
+                {
+                  "id": "modelperm-92689d7575617e00",
+                  "object": "model_permission",
+                  "created": 1792271457,
+                  "allow_create_engine": false,
+                  "allow_sampling": true,
+                  "allow_logprobs": true,
+                  "allow_search_indices": false,
+                  "allow_view": true,
+                  "allow_fine_tuning": false,
+                  "organization": "*",
+                  "group": null,
+                  "is_blocking": false
+                }
+              ]
+            }
+          ]
+        },
+        "memory": {
+          "mem_available_bytes": 17434341376,
+          "mem_free_bytes": 10534576128,
+          "swap_free_bytes": 11132928000
+        },
+        "metrics": {
+          "vllm:spec_decode_num_draft_tokens_total": 5745.0,
+          "vllm:spec_decode_num_accepted_tokens_total": 2442.0,
+          "vllm:num_requests_running": 0.0,
+          "vllm:num_requests_waiting": 0.0,
+          "vllm:num_requests_waiting_by_reason": 0.0,
+          "vllm:kv_cache_usage_perc": 0.0,
+          "vllm:prefix_cache_queries_total": 237399.0,
+          "vllm:prefix_cache_hits_total": 11874.0,
+          "vllm:external_prefix_cache_queries_total": 0.0,
+          "vllm:external_prefix_cache_hits_total": 0.0,
+          "vllm:num_preemptions_total": 0.0,
+          "vllm:num_preemptions_created": 1792263005.5081868,
+          "vllm:request_num_preemptions_bucket": 232.0,
+          "vllm:request_num_preemptions_count": 29.0,
+          "vllm:request_num_preemptions_sum": 0.0,
+          "vllm:request_num_preemptions_created": 1792263005.5086157
+        },
+        "kernel": {
+          "journal_rc": 0,
+          "xid": false,
+          "oom": false,
+          "nv_err_no_memory_count": 0
+        }
+      },
+      "post_state": {
+        "models_http_status": 200,
+        "models": {
+          "object": "list",
+          "data": [
+            {
+              "id": "vllmcritic",
+              "object": "model",
+              "created": 1792271484,
+              "owned_by": "vllm",
+              "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+              "parent": null,
+              "max_model_len": 200000,
+              "permission": [
+                {
+                  "id": "modelperm-9457c1a65525cb80",
+                  "object": "model_permission",
+                  "created": 1792271484,
+                  "allow_create_engine": false,
+                  "allow_sampling": true,
+                  "allow_logprobs": true,
+                  "allow_search_indices": false,
+                  "allow_view": true,
+                  "allow_fine_tuning": false,
+                  "organization": "*",
+                  "group": null,
+                  "is_blocking": false
+                }
+              ]
+            },
+            {
+              "id": "Qwen3.8-Flash-Next",
+              "object": "model",
+              "created": 1792271484,
+              "owned_by": "vllm",
+              "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+              "parent": null,
+              "max_model_len": 200000,
+              "permission": [
+                {
+                  "id": "modelperm-ba8324d3aeb0a476",
+                  "object": "model_permission",
+                  "created": 1792271484,
+                  "allow_create_engine": false,
+                  "allow_sampling": true,
+                  "allow_logprobs": true,
+                  "allow_search_indices": false,
+                  "allow_view": true,
+                  "allow_fine_tuning": false,
+                  "organization": "*",
+                  "group": null,
+                  "is_blocking": false
+                }
+              ]
+            }
+          ]
+        },
+        "memory": {
+          "mem_available_bytes": 17378811904,
+          "mem_free_bytes": 10478432256,
+          "swap_free_bytes": 11132956672
+        },
+        "metrics": {
+          "vllm:spec_decode_num_draft_tokens_total": 5802.0,
+          "vllm:spec_decode_num_accepted_tokens_total": 2499.0,
+          "vllm:num_requests_running": 0.0,
+          "vllm:num_requests_waiting": 0.0,
+          "vllm:num_requests_waiting_by_reason": 0.0,
+          "vllm:kv_cache_usage_perc": 0.0,
+          "vllm:prefix_cache_queries_total": 302935.0,
+          "vllm:prefix_cache_hits_total": 11874.0,
+          "vllm:external_prefix_cache_queries_total": 0.0,
+          "vllm:external_prefix_cache_hits_total": 0.0,
+          "vllm:num_preemptions_total": 0.0,
+          "vllm:num_preemptions_created": 1792263005.5081868,
+          "vllm:request_num_preemptions_bucket": 240.0,
+          "vllm:request_num_preemptions_count": 30.0,
+          "vllm:request_num_preemptions_sum": 0.0,
+          "vllm:request_num_preemptions_created": 1792263005.5086157
+        },
+        "kernel": {
+          "journal_rc": 0,
+          "xid": false,
+          "oom": false,
+          "nv_err_no_memory_count": 0
+        }
+      },
+      "kernel_window": {
+        "journal_rc": 0,
+        "xid": false,
+        "oom": false,
+        "nv_err_no_memory_count": 0
+      },
+      "status": "PASS",
+      "classification": "PASS"
+    },
+    {
+      "label": "c2_65536",
+      "concurrency_configured": 2,
+      "target_prompt_tokens": 65536,
+      "output_reserve_tokens": 256,
+      "total_limit": 200000,
+      "actual_prompt_tokens": [
+        65536,
+        65536
+      ],
+      "prompt_sha256": [
+        "59c8aadf1a65def549b2fbe9af7e4d1ae3c53a86303ca4531df5e0e2ccb99d87",
+        "cccf954ad56287d285bf10be4794847bc00fdd24405f22da38c99fa1541f422e"
+      ],
+      "wall_s": 55.074975001014536,
+      "aggregate_e2e_output_tps": 2.796188286915485,
+      "resident_same_sample_count": 124,
+      "decode_common_interval_s": 0.21807765398989432,
+      "decode_interval_same_sample_count": 1,
+      "requests": [
+        {
+          "done": true,
+          "usage": {
+            "prompt_tokens": 65536,
+            "total_tokens": 65613,
+            "completion_tokens": 77,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "finish_reason": "stop",
+          "first_visible_s": 53.76588776599965,
+          "last_visible_s": 55.0667160100129,
+          "visible_chunks": 21,
+          "visible_text": "```json\n{\n  \"markers\": [\n    \"CANARY_5_0_78169489\",\n    \"CANARY_50_0_78169489\",\n    \"CANARY_95_0_78169489\"\n  ]\n}\n```",
+          "name": "c2_65536_lane0",
+          "http_status": 200,
+          "elapsed_s": 55.06757020202349,
+          "input_tokens": 65536,
+          "output_tokens": 77,
+          "cached_tokens": null,
+          "semantic_pass": true,
+          "output_tps_end_to_end": 1.398282141694543,
+          "decode_tps_approx": 58.424315700225605,
+          "metric_delta": {
+            "vllm:spec_decode_num_draft_tokens_total": 123.0,
+            "vllm:spec_decode_num_accepted_tokens_total": 111.0,
+            "vllm:num_requests_running": 0.0,
+            "vllm:num_requests_waiting": 0.0,
+            "vllm:num_requests_waiting_by_reason": 0.0,
+            "vllm:kv_cache_usage_perc": 0.0,
+            "vllm:prefix_cache_queries_total": 131072.0,
+            "vllm:prefix_cache_hits_total": 0.0,
+            "vllm:external_prefix_cache_queries_total": 0.0,
+            "vllm:external_prefix_cache_hits_total": 0.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:num_preemptions_created": 0.0,
+            "vllm:request_num_preemptions_bucket": 16.0,
+            "vllm:request_num_preemptions_count": 2.0,
+            "vllm:request_num_preemptions_sum": 0.0,
+            "vllm:request_num_preemptions_created": 0.0
+          },
+          "status": "PASS"
+        },
+        {
+          "done": true,
+          "usage": {
+            "prompt_tokens": 65536,
+            "total_tokens": 65613,
+            "completion_tokens": 77,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "finish_reason": "stop",
+          "first_visible_s": 28.076548778975848,
+          "last_visible_s": 53.983965419989545,
+          "visible_chunks": 22,
+          "visible_text": "```json\n{\n  \"markers\": [\n    \"CANARY_5_1_61035211\",\n    \"CANARY_50_1_61035211\",\n    \"CANARY_95_1_61035211\"\n  ]\n}\n```",
+          "name": "c2_65536_lane1",
+          "http_status": 200,
+          "elapsed_s": 53.98481285999878,
+          "input_tokens": 65536,
+          "output_tokens": 77,
+          "cached_tokens": null,
+          "semantic_pass": true,
+          "output_tps_end_to_end": 1.4263270709058031,
+          "decode_tps_approx": 2.9335229001445624,
+          "metric_delta": {
+            "vllm:spec_decode_num_draft_tokens_total": 72.0,
+            "vllm:spec_decode_num_accepted_tokens_total": 64.0,
+            "vllm:num_requests_running": 1.0,
+            "vllm:num_requests_waiting": 0.0,
+            "vllm:num_requests_waiting_by_reason": 0.0,
+            "vllm:kv_cache_usage_perc": 0.10457865668982713,
+            "vllm:prefix_cache_queries_total": 131072.0,
+            "vllm:prefix_cache_hits_total": 0.0,
+            "vllm:external_prefix_cache_queries_total": 0.0,
+            "vllm:external_prefix_cache_hits_total": 0.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:num_preemptions_created": 0.0,
+            "vllm:request_num_preemptions_bucket": 8.0,
+            "vllm:request_num_preemptions_count": 1.0,
+            "vllm:request_num_preemptions_sum": 0.0,
+            "vllm:request_num_preemptions_created": 0.0
+          },
+          "status": "PASS"
+        }
+      ],
+      "pre_state": {
+        "models_http_status": 200,
+        "models": {
+          "object": "list",
+          "data": [
+            {
+              "id": "vllmcritic",
+              "object": "model",
+              "created": 1792271484,
+              "owned_by": "vllm",
+              "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+              "parent": null,
+              "max_model_len": 200000,
+              "permission": [
+                {
+                  "id": "modelperm-bc92ffc8f36df298",
+                  "object": "model_permission",
+                  "created": 1792271484,
+                  "allow_create_engine": false,
+                  "allow_sampling": true,
+                  "allow_logprobs": true,
+                  "allow_search_indices": false,
+                  "allow_view": true,
+                  "allow_fine_tuning": false,
+                  "organization": "*",
+                  "group": null,
+                  "is_blocking": false
+                }
+              ]
+            },
+            {
+              "id": "Qwen3.8-Flash-Next",
+              "object": "model",
+              "created": 1792271484,
+              "owned_by": "vllm",
+              "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+              "parent": null,
+              "max_model_len": 200000,
+              "permission": [
+                {
+                  "id": "modelperm-9d0b9dae25aa8a92",
+                  "object": "model_permission",
+                  "created": 1792271484,
+                  "allow_create_engine": false,
+                  "allow_sampling": true,
+                  "allow_logprobs": true,
+                  "allow_search_indices": false,
+                  "allow_view": true,
+                  "allow_fine_tuning": false,
+                  "organization": "*",
+                  "group": null,
+                  "is_blocking": false
+                }
+              ]
+            }
+          ]
+        },
+        "memory": {
+          "mem_available_bytes": 17386483712,
+          "mem_free_bytes": 10486112256,
+          "swap_free_bytes": 11132956672
+        },
+        "metrics": {
+          "vllm:spec_decode_num_draft_tokens_total": 5802.0,
+          "vllm:spec_decode_num_accepted_tokens_total": 2499.0,
+          "vllm:num_requests_running": 0.0,
+          "vllm:num_requests_waiting": 0.0,
+          "vllm:num_requests_waiting_by_reason": 0.0,
+          "vllm:kv_cache_usage_perc": 0.0,
+          "vllm:prefix_cache_queries_total": 302935.0,
+          "vllm:prefix_cache_hits_total": 11874.0,
+          "vllm:external_prefix_cache_queries_total": 0.0,
+          "vllm:external_prefix_cache_hits_total": 0.0,
+          "vllm:num_preemptions_total": 0.0,
+          "vllm:num_preemptions_created": 1792263005.5081868,
+          "vllm:request_num_preemptions_bucket": 240.0,
+          "vllm:request_num_preemptions_count": 30.0,
+          "vllm:request_num_preemptions_sum": 0.0,
+          "vllm:request_num_preemptions_created": 1792263005.5086157
+        },
+        "kernel": {
+          "journal_rc": 0,
+          "xid": false,
+          "oom": false,
+          "nv_err_no_memory_count": 0
+        }
+      },
+      "post_state": {
+        "models_http_status": 200,
+        "models": {
+          "object": "list",
+          "data": [
+            {
+              "id": "vllmcritic",
+              "object": "model",
+              "created": 1792271540,
+              "owned_by": "vllm",
+              "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+              "parent": null,
+              "max_model_len": 200000,
+              "permission": [
+                {
+                  "id": "modelperm-a9fcd1e2d601a985",
+                  "object": "model_permission",
+                  "created": 1792271540,
+                  "allow_create_engine": false,
+                  "allow_sampling": true,
+                  "allow_logprobs": true,
+                  "allow_search_indices": false,
+                  "allow_view": true,
+                  "allow_fine_tuning": false,
+                  "organization": "*",
+                  "group": null,
+                  "is_blocking": false
+                }
+              ]
+            },
+            {
+              "id": "Qwen3.8-Flash-Next",
+              "object": "model",
+              "created": 1792271540,
+              "owned_by": "vllm",
+              "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+              "parent": null,
+              "max_model_len": 200000,
+              "permission": [
+                {
+                  "id": "modelperm-ad865f19ac419f38",
+                  "object": "model_permission",
+                  "created": 1792271540,
+                  "allow_create_engine": false,
+                  "allow_sampling": true,
+                  "allow_logprobs": true,
+                  "allow_search_indices": false,
+                  "allow_view": true,
+                  "allow_fine_tuning": false,
+                  "organization": "*",
+                  "group": null,
+                  "is_blocking": false
+                }
+              ]
+            }
+          ]
+        },
+        "memory": {
+          "mem_available_bytes": 17479045120,
+          "mem_free_bytes": 10573238272,
+          "swap_free_bytes": 11133214720
+        },
+        "metrics": {
+          "vllm:spec_decode_num_draft_tokens_total": 5925.0,
+          "vllm:spec_decode_num_accepted_tokens_total": 2610.0,
+          "vllm:num_requests_running": 0.0,
+          "vllm:num_requests_waiting": 0.0,
+          "vllm:num_requests_waiting_by_reason": 0.0,
+          "vllm:kv_cache_usage_perc": 0.0,
+          "vllm:prefix_cache_queries_total": 434007.0,
+          "vllm:prefix_cache_hits_total": 11874.0,
+          "vllm:external_prefix_cache_queries_total": 0.0,
+          "vllm:external_prefix_cache_hits_total": 0.0,
+          "vllm:num_preemptions_total": 0.0,
+          "vllm:num_preemptions_created": 1792263005.5081868,
+          "vllm:request_num_preemptions_bucket": 256.0,
+          "vllm:request_num_preemptions_count": 32.0,
+          "vllm:request_num_preemptions_sum": 0.0,
+          "vllm:request_num_preemptions_created": 1792263005.5086157
+        },
+        "kernel": {
+          "journal_rc": 0,
+          "xid": false,
+          "oom": false,
+          "nv_err_no_memory_count": 0
+        }
+      },
+      "kernel_window": {
+        "journal_rc": 0,
+        "xid": false,
+        "oom": false,
+        "nv_err_no_memory_count": 0
+      },
+      "status": "FAIL",
+      "classification": "RESIDENCY_NOT_PROVEN"
+    }
+  ],
+  "terminal": "STOP_AT_c2_65536",
+  "preflight": {
+    "models_http_status": 200,
+    "models": {
+      "object": "list",
+      "data": [
+        {
+          "id": "vllmcritic",
+          "object": "model",
+          "created": 1792271457,
+          "owned_by": "vllm",
+          "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+          "parent": null,
+          "max_model_len": 200000,
+          "permission": [
+            {
+              "id": "modelperm-92986b5850aebc75",
+              "object": "model_permission",
+              "created": 1792271457,
+              "allow_create_engine": false,
+              "allow_sampling": true,
+              "allow_logprobs": true,
+              "allow_search_indices": false,
+              "allow_view": true,
+              "allow_fine_tuning": false,
+              "organization": "*",
+              "group": null,
+              "is_blocking": false
+            }
+          ]
+        },
+        {
+          "id": "Qwen3.8-Flash-Next",
+          "object": "model",
+          "created": 1792271457,
+          "owned_by": "vllm",
+          "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+          "parent": null,
+          "max_model_len": 200000,
+          "permission": [
+            {
+              "id": "modelperm-a9db144f13de6243",
+              "object": "model_permission",
+              "created": 1792271457,
+              "allow_create_engine": false,
+              "allow_sampling": true,
+              "allow_logprobs": true,
+              "allow_search_indices": false,
+              "allow_view": true,
+              "allow_fine_tuning": false,
+              "organization": "*",
+              "group": null,
+              "is_blocking": false
+            }
+          ]
+        }
+      ]
+    },
+    "memory": {
+      "mem_available_bytes": 17434341376,
+      "mem_free_bytes": 10534576128,
+      "swap_free_bytes": 11132928000
+    },
+    "metrics": {
+      "vllm:spec_decode_num_draft_tokens_total": 5745.0,
+      "vllm:spec_decode_num_accepted_tokens_total": 2442.0,
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 0.0,
+      "vllm:num_requests_waiting_by_reason": 0.0,
+      "vllm:kv_cache_usage_perc": 0.0,
+      "vllm:prefix_cache_queries_total": 237399.0,
+      "vllm:prefix_cache_hits_total": 11874.0,
+      "vllm:external_prefix_cache_queries_total": 0.0,
+      "vllm:external_prefix_cache_hits_total": 0.0,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:num_preemptions_created": 1792263005.5081868,
+      "vllm:request_num_preemptions_bucket": 232.0,
+      "vllm:request_num_preemptions_count": 29.0,
+      "vllm:request_num_preemptions_sum": 0.0,
+      "vllm:request_num_preemptions_created": 1792263005.5086157
+    },
+    "kernel": {
+      "journal_rc": 0,
+      "xid": false,
+      "oom": false,
+      "nv_err_no_memory_count": 0
+    }
+  },
+  "final_state": {
+    "models_http_status": 200,
+    "models": {
+      "object": "list",
+      "data": [
+        {
+          "id": "vllmcritic",
+          "object": "model",
+          "created": 1792271540,
+          "owned_by": "vllm",
+          "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+          "parent": null,
+          "max_model_len": 200000,
+          "permission": [
+            {
+              "id": "modelperm-a3a695eb9ace0737",
+              "object": "model_permission",
+              "created": 1792271540,
+              "allow_create_engine": false,
+              "allow_sampling": true,
+              "allow_logprobs": true,
+              "allow_search_indices": false,
+              "allow_view": true,
+              "allow_fine_tuning": false,
+              "organization": "*",
+              "group": null,
+              "is_blocking": false
+            }
+          ]
+        },
+        {
+          "id": "Qwen3.8-Flash-Next",
+          "object": "model",
+          "created": 1792271540,
+          "owned_by": "vllm",
+          "root": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+          "parent": null,
+          "max_model_len": 200000,
+          "permission": [
+            {
+              "id": "modelperm-bb1c5b078ee8343e",
+              "object": "model_permission",
+              "created": 1792271540,
+              "allow_create_engine": false,
+              "allow_sampling": true,
+              "allow_logprobs": true,
+              "allow_search_indices": false,
+              "allow_view": true,
+              "allow_fine_tuning": false,
+              "organization": "*",
+              "group": null,
+              "is_blocking": false
+            }
+          ]
+        }
+      ]
+    },
+    "memory": {
+      "mem_available_bytes": 17457430528,
+      "mem_free_bytes": 10551631872,
+      "swap_free_bytes": 11133214720
+    },
+    "metrics": {
+      "vllm:spec_decode_num_draft_tokens_total": 5925.0,
+      "vllm:spec_decode_num_accepted_tokens_total": 2610.0,
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 0.0,
+      "vllm:num_requests_waiting_by_reason": 0.0,
+      "vllm:kv_cache_usage_perc": 0.0,
+      "vllm:prefix_cache_queries_total": 434007.0,
+      "vllm:prefix_cache_hits_total": 11874.0,
+      "vllm:external_prefix_cache_queries_total": 0.0,
+      "vllm:external_prefix_cache_hits_total": 0.0,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:num_preemptions_created": 1792263005.5081868,
+      "vllm:request_num_preemptions_bucket": 256.0,
+      "vllm:request_num_preemptions_count": 32.0,
+      "vllm:request_num_preemptions_sum": 0.0,
+      "vllm:request_num_preemptions_created": 1792263005.5086157
+    },
+    "kernel": {
+      "journal_rc": 0,
+      "xid": false,
+      "oom": false,
+      "nv_err_no_memory_count": 0
+    }
+  },
+  "min_mem_available_bytes": 17122729984,
+  "min_swap_free_bytes": 11132928000,
+  "telemetry_samples": 398,
+  "limitations": [
+    "Synthetic salted filler and one retrieval-style JSON contract; not MMLU/general quality.",
+    "TTFT is first visible content; decode TPS is approximate under SSE chunk coalescing/MTP.",
+    "E2E TPS uses completion tokens divided by full client wave wall time including prefill.",
+    "A FAIL stops escalation; it does not prove a smaller/larger unrun envelope."
+  ]
+}
