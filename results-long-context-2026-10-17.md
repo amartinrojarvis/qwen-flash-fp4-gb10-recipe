@@ -23,7 +23,7 @@ TTFT is the first visible content event. “Approx. decode” is `(completion_to
 
 The campaign took two idle samples before loading, used a bounded harness deadman while the existing persistent service monitor remained active, and recorded memory, swap, scheduler, preemption, prefix-cache, speculative-decoding, and kernel-event state incrementally. All executed waves reported zero preemptions; no Xid, host OOM, or `NV_ERR_NO_MEMORY` event was seen. The endpoint remained healthy afterward with the same physical 200K service and final argv; chat JSON, tool call, and the local direct OCR fixture also passed. The separate vision sidecar remained off.
 
-Escalation stopped after the C2 65,536 concurrency wave could not prove a common decode interval. Consequently, C3/C4 near-200K and C2 near-200K are **not run**, not capacity failures. The single near-full C1 result proves one 198K prompt within the configured total-token limit; it does not prove four full resident 200K contexts, a soak, or general quality.
+The initial ladder stopped after the C2 65,536 concurrency wave could not prove a common decode interval. At that point, C3/C4 near-200K and C2 near-200K had not run; this was not a capacity failure. They were subsequently completed in the same profile and are reported separately in [the full-context completion](results-full-context-completion-2026-10-17.md). That later campaign still does not prove four fully resident 200K contexts, a soak, or general quality.
 
 ## Workload construction and limits
 
