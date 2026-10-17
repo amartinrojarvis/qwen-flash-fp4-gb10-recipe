@@ -1,0 +1,149 @@
+{
+  "workloads": [
+    {
+      "workload": "pp512_tg128",
+      "waves": 1,
+      "requests": 1,
+      "input_per_request": 512,
+      "output_per_request": 128,
+      "ttft_median_ms": 442.0732159924228,
+      "ttft_min_ms": 442.0732159924228,
+      "ttft_max_ms": 442.0732159924228,
+      "end_to_end_output_tps_median": 32.47585250185741,
+      "approx_decode_tps_per_request_median": 36.34707064372385
+    },
+    {
+      "workload": "pp512_tg128_warm",
+      "waves": 1,
+      "requests": 1,
+      "input_per_request": 512,
+      "output_per_request": 128,
+      "ttft_median_ms": 84.78775201365352,
+      "ttft_min_ms": 84.78775201365352,
+      "ttft_max_ms": 84.78775201365352,
+      "end_to_end_output_tps_median": 35.56007595241384,
+      "approx_decode_tps_per_request_median": 36.13458327035328
+    },
+    {
+      "workload": "c1_1024",
+      "waves": 3,
+      "requests": 3,
+      "input_per_request": 1024,
+      "output_per_request": 256,
+      "ttft_median_ms": 661.159791983664,
+      "ttft_min_ms": 629.512131010415,
+      "ttft_max_ms": 664.1570900101215,
+      "end_to_end_output_tps_median": 32.69744266869146,
+      "approx_decode_tps_per_request_median": 35.61771805917095
+    },
+    {
+      "workload": "c1_1024_warm",
+      "waves": 3,
+      "requests": 3,
+      "input_per_request": 1024,
+      "output_per_request": 256,
+      "ttft_median_ms": 56.895100977271795,
+      "ttft_min_ms": 50.39483800646849,
+      "ttft_max_ms": 62.14965300750919,
+      "end_to_end_output_tps_median": 33.83985588816775,
+      "approx_decode_tps_per_request_median": 33.934806088452206
+    },
+    {
+      "workload": "c2_8192",
+      "waves": 1,
+      "requests": 2,
+      "input_per_request": 8192,
+      "output_per_request": 256,
+      "ttft_median_ms": 5903.206203001901,
+      "ttft_min_ms": 4943.508858996211,
+      "ttft_max_ms": 6862.9035470075905,
+      "end_to_end_output_tps_median": 32.64504004667713,
+      "approx_decode_tps_per_request_median": 26.462961170351896
+    },
+    {
+      "workload": "c4_8192",
+      "waves": 1,
+      "requests": 4,
+      "input_per_request": 8192,
+      "output_per_request": 256,
+      "ttft_median_ms": 12517.886155983433,
+      "ttft_min_ms": 4958.144353993703,
+      "ttft_max_ms": 13693.68034900981,
+      "end_to_end_output_tps_median": 40.01321674529756,
+      "approx_decode_tps_per_request_median": 20.18838636569223
+    },
+    {
+      "workload": "c1_32768",
+      "waves": 1,
+      "requests": 1,
+      "input_per_request": 32768,
+      "output_per_request": 128,
+      "ttft_median_ms": 13041.71551001491,
+      "ttft_min_ms": 13041.71551001491,
+      "ttft_max_ms": 13041.71551001491,
+      "end_to_end_output_tps_median": 7.685018479533084,
+      "approx_decode_tps_per_request_median": 35.228530757890574
+    },
+    {
+      "workload": "c1_8192_cold",
+      "waves": 1,
+      "requests": 1,
+      "input_per_request": 8192,
+      "output_per_request": 256,
+      "ttft_median_ms": 3364.5976580155548,
+      "end_to_end_output_tps_median": 25.03032751235502,
+      "approx_decode_tps_per_request_median": 37.15713643599721
+    },
+    {
+      "workload": "c1_8192_warm",
+      "waves": 1,
+      "requests": 1,
+      "input_per_request": 8192,
+      "output_per_request": 256,
+      "ttft_median_ms": 196.2924849940464,
+      "end_to_end_output_tps_median": 36.17442799114618,
+      "approx_decode_tps_per_request_median": 37.063169327510884
+    }
+  ],
+  "functional": [
+    {
+      "name": "json",
+      "passed": true
+    },
+    {
+      "name": "grounding",
+      "passed": true
+    },
+    {
+      "name": "tool",
+      "passed": true
+    }
+  ],
+  "vision_smoke": true,
+  "decode_overlap": [
+    {
+      "group": "c2_8192",
+      "all_visible_decoding_interval_s": 8.745907967007952,
+      "resident_zero_waiting_samples_during_interval": 54
+    },
+    {
+      "group": "c4_8192",
+      "all_visible_decoding_interval_s": 10.158699794003041,
+      "resident_zero_waiting_samples_during_interval": 63
+    }
+  ],
+  "mtp_acceptance_percent": 39.9624765478424,
+  "preemptions": 0.0,
+  "min_available_gib": 16.410526275634766,
+  "min_swap_free_gib": 10.339103698730469,
+  "unchanged_model": true,
+  "performance_request_count": 17,
+  "cache_details_in_api": "unavailable; observed prefix reuse through native cache-hit token counter deltas",
+  "limitations": [
+    "Not four full 200K windows",
+    "Not MMLU or model quality certification",
+    "Synthetic alpha-filler prompts; forced output length",
+    "Decode TPS approximate because SSE may coalesce speculative tokens",
+    "Cache-hit count unknown unless API/native counters provide evidence"
+  ]
+}

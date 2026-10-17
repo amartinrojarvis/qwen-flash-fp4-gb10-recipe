@@ -1,0 +1,37 @@
+# Model artifacts and private caches
+models/
+weights/
+*.safetensors
+*.safetensors.index.json
+*.bin
+*.pt
+*.pth
+*.gguf
+hf-cache/
+b12x-cache/
+cache/
+
+# Runtime outputs and benchmark evidence
+logs/
+results/
+*.log
+*.jsonl
+*.sqlite
+
+# Local configuration/secrets
+.env
+.env.*
+!*.example
+credentials/
+secrets/
+
+# Sanitized, explicitly reviewed historical benchmark evidence
+!benchmarks/runs/**/*.jsonl
+benchmark-output/
+
+# Python/editor
+__pycache__/
+*.py[cod]
+.venv/
+.vscode/
+.idea/

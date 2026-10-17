@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "response": {
+    "id": "chatcmpl-847e6fbdec7dd308",
+    "object": "chat.completion",
+    "created": 1792263979,
+    "model": "vllmcritic",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```text\nK7M4\n```",
+          "refusal": null,
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "reasoning": null
+        },
+        "logprobs": null,
+        "finish_reason": "stop",
+        "stop_reason": null,
+        "token_ids": null,
+        "routed_experts": null
+      }
+    ],
+    "service_tier": null,
+    "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-672ede85",
+    "usage": {
+      "prompt_tokens": 98,
+      "total_tokens": 108,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "prompt_logprobs": null,
+    "prompt_token_ids": null,
+    "prompt_text": null,
+    "kv_transfer_params": null,
+    "ec_transfer_params": null,
+    "metrics": null
+  },
+  "image_sha256": "65ffed64385bea553597edb45a049a85d53deeda4bfee0089eabd4e95f51b2d2",
+  "scope": "one simple OCR image, not general vision benchmark"
+}

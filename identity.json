@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "observed_at_utc_date": "2026-10-17",
+  "scope": "Runtime identity observed during active 200K serving; actual benchmark evidence is stored under benchmarks/runs. The portable launcher reconstruction itself was not GPU-launched.",
+  "hardware": {
+    "kernel": "Linux 7.0.0-1019-nvidia aarch64",
+    "gpu_name": "NVIDIA GB10",
+    "nvidia_driver_version": "580.178.04",
+    "uma_requirement": "128 GB"
+  },
+  "model": {
+    "logical_id": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+    "revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+    "base_model_stated_by_local_card": "Qwen/Qwen3.8-Flash-Next",
+    "physical_input": "Required separately acquired local model export; not included and not claimed reproducible from model ID alone.",
+    "quantization_observed": "Model Optimizer MIXED_PRECISION with NVFP4 and MXFP8 components"
+  },
+  "runtime": {
+    "image": "eugr/spark-vllm-b12x@sha256:03a956544e9f9b4b7ba91690469fbe7848bdbef29a7d2e0f5788368467bb3595",
+    "image_platform": "linux/arm64",
+    "local_image_id_observed": "sha256:a7f76ae9f18c7701c9cde5f72c606393d9a21ca94dd8e53b27589935f64fcbe2",
+    "vllm_version": "0.1.dev21830+g8244d1c44.d20261015",
+    "torch_version": "2.13.0+cu130",
+    "cuda_version": "13.0",
+    "upstream_repository": "https://github.com/eugr/spark-vllm-docker.git",
+    "upstream_commit": "0bdc9c94cd89843e1c8f7d7b33df2d5bc746c03d",
+    "vendor_runtime_modifications_observed": true
+  },
+  "effective_profile": {
+    "max_model_len": 200000,
+    "max_num_seqs": 4,
+    "max_num_batched_tokens": 4096,
+    "kv_cache_dtype": "fp8",
+    "quantization": "modelopt_mixed",
+    "speculative_config": {"method": "mtp", "num_speculative_tokens": 3},
+    "additional_config": {"ple_table_memory": "disk"},
+    "b12x_disk_backend": "io_uring",
+    "pytorch_alloc_conf": "backend:native,expandable_segments:True",
+    "prefix_caching": true,
+    "chunked_prefill": true,
+    "host_network": true,
+    "ipc_mode": "private",
+    "shm_size": "64g",
+    "seccomp": "unconfined",
+    "privileged": false
+  },
+  "template": {
+    "distributed_by_this_repository": false,
+    "sha256_observed": "e57684bae4156211a55473c5a63be976a405a37ab5be5ae0e5abf1df5349c4b2",
+    "bytes_observed": 28234
+  },
+  "pin_sources": [
+    "Docker inspect/image digest, docker top, docker exec ps/version, startup logs",
+    "profiles/200k/config.json (final repeated flags take precedence)",
+    "pinned upstream source repository and local model-card metadata"
+  ]
+}

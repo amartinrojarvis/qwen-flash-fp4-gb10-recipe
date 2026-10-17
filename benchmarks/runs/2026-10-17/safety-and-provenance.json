@@ -1,0 +1,9 @@
+{
+  "start_epoch": 1792263774,
+  "end_epoch": 1792264085.3469028,
+  "fatal_xid_or_system_oom_events": 0,
+  "allocation_warning_events": 0,
+  "model_service_active": true,
+  "source_sha256": "9a68821e7aedb4dc4f8d0e7ae020246089d4d29eebae4dfa23f343f8b7eccf28",
+  "sidecar_port_free": true
+}

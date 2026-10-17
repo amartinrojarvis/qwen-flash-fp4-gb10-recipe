@@ -1,0 +1,12 @@
+[
+  {
+    "group": "c2_8192",
+    "all_visible_decoding_interval_s": 8.745907967007952,
+    "resident_zero_waiting_samples_during_interval": 54
+  },
+  {
+    "group": "c4_8192",
+    "all_visible_decoding_interval_s": 10.158699794003041,
+    "resident_zero_waiting_samples_during_interval": 63
+  }
+]

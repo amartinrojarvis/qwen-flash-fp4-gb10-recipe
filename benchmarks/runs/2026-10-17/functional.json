@@ -1,0 +1,150 @@
+[
+  {
+    "name": "json",
+    "passed": true,
+    "response": {
+      "id": "chatcmpl-b6847bcffb5b24c5",
+      "object": "chat.completion",
+      "created": 1792263784,
+      "model": "vllmcritic",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\n  \"status\": \"ok\",\n  \"count\": 3\n}",
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "reasoning": null
+          },
+          "logprobs": null,
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": null,
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-672ede85",
+      "usage": {
+        "prompt_tokens": 30,
+        "total_tokens": 49,
+        "completion_tokens": 19,
+        "prompt_tokens_details": null,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "prompt_text": null,
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": null
+    }
+  },
+  {
+    "name": "grounding",
+    "passed": true,
+    "response": {
+      "id": "chatcmpl-b9d2e97a884730a1",
+      "object": "chat.completion",
+      "created": 1792263785,
+      "model": "vllmcritic",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\n  \"code\": \"K-47\",\n  \"launch_date\": null\n}",
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "reasoning": null
+          },
+          "logprobs": null,
+          "finish_reason": "stop",
+          "stop_reason": null,
+          "token_ids": null,
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-672ede85",
+      "usage": {
+        "prompt_tokens": 47,
+        "total_tokens": 69,
+        "completion_tokens": 22,
+        "prompt_tokens_details": null,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "prompt_text": null,
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": null
+    }
+  },
+  {
+    "name": "tool",
+    "passed": true,
+    "response": {
+      "id": "chatcmpl-a6ab2faa4d0117d4",
+      "object": "chat.completion",
+      "created": 1792263786,
+      "model": "vllmcritic",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": null,
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": [
+              {
+                "id": "chatcmpl-tool-b7a84b831af896cf",
+                "type": "function",
+                "function": {
+                  "name": "record_measurement",
+                  "arguments": "{\"label\": \"sample\", \"value\": 7}"
+                }
+              }
+            ],
+            "reasoning": null
+          },
+          "logprobs": null,
+          "finish_reason": "tool_calls",
+          "stop_reason": null,
+          "token_ids": null,
+          "routed_experts": null
+        }
+      ],
+      "service_tier": null,
+      "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-672ede85",
+      "usage": {
+        "prompt_tokens": 355,
+        "total_tokens": 392,
+        "completion_tokens": 37,
+        "prompt_tokens_details": null,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "prompt_logprobs": null,
+      "prompt_token_ids": null,
+      "prompt_text": null,
+      "kv_transfer_params": null,
+      "ec_transfer_params": null,
+      "metrics": null
+    }
+  }
+]
