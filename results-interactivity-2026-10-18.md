@@ -50,6 +50,10 @@ still reported both aliases at a 200,000-token limit and was idle.
 
 ## Limits
 
+- The producer requested repetitions of the word `pulse` in synthetic filler histories. This highly predictable workload is useful for scheduling/cache observation but is not representative code, tool or natural-prose throughput; do not compare its aggregate TPS with earlier different-content cases as a configuration speedup.
+- The injected cold request was 32K, not 200K. No fourth full-window cold injection or matched TensorFold/MTP6 comparison was executed.
+- Optimization research and support limitations are recorded in [optimization-research-2026-10-18.md](optimization-research-2026-10-18.md).
+
 - Native `running=3–4, waiting=0` samples show scheduler activity during the
   cold prefill, but do not establish that four near-200K KV histories were
   physically resident simultaneously.
