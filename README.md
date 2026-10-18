@@ -10,7 +10,7 @@ Soy **Alberto Martín**, filmmaker y creador de [IA para Filmmakers](https://www
 
 A fecha de la revisión del **18 de octubre de 2026**, la receta de Qwen Flash Next para TensorFold que estoy siguiendo documenta una limitación relevante: los prompts con imágenes o vídeo **no se conservan para reutilización de prefijo**, por lo que se vuelven a procesar en cada turno con medios. El [README del proyecto lo explica expresamente](https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Single-DGX-Spark-TensorFold/blob/06df57f8a76c74fec908c87fdbc4dd702ff598f9/README.md#L330-L333), y su [parche de serving excluye las solicitudes con medios de la búsqueda de caché](https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Single-DGX-Spark-TensorFold/blob/06df57f8a76c74fec908c87fdbc4dd702ff598f9/patches/0007-serving.patch#L68-L74). Hablo de esa receta y revisión concretas, no de todas las versiones de TensorFold ni de una incapacidad para entender imágenes.
 
-Para mi trabajo audiovisual estoy probando **vLLM como una alternativa que parece más robusta para este flujo**: historiales largos, herramientas, entrada visual y varias conversaciones activas. Aquí comparto la receta y las pruebas, incluidos fallos del evaluador y resultados inconclusos. Los [casos visuales corregidos](results-multimodal-cache-v2-2026-10-18.md) comprobaron seguimiento e invalidación al cambiar imágenes, pero **todavía no demuestran reutilización del encoder o de la caché visual**. Tampoco hay una comparación equivalente que pruebe superioridad universal frente a TensorFold. MTP6 sigue pendiente, sin resultados inventados.
+Para mi trabajo audiovisual estoy probando **vLLM como una alternativa que parece más robusta para este flujo**: historiales largos, herramientas, entrada visual y varias conversaciones activas. Aquí comparto la receta y las pruebas, incluidos fallos del evaluador y resultados inconclusos. Los [casos visuales corregidos](results-multimodal-cache-v2-2026-10-18.md) comprobaron seguimiento e invalidación al cambiar imágenes, pero **todavía no demuestran reutilización del encoder o de la caché visual**. Tampoco hay una comparación equivalente que pruebe superioridad universal frente a TensorFold. El [A/B MTP3/MTP6 reparado](results-mtp6-ab-repair-2026-10-18.md) se ejecutó con tres repeticiones y payloads byte-idénticos por par: no retuvo MTP6 en este workload acotado.
 
 **¿Quieres aplicar IA a un problema real de tu negocio audiovisual?** En [mi asesoría y mentoría 1:1 para filmmakers, videógrafos, fotógrafos y pequeños equipos](https://www.iaparafilmmakers.es/?utm_source=github&utm_medium=referral&utm_campaign=qwen_fp4_gb10&utm_content=mentoria_es) trabajamos sobre tu caso y construimos un sistema que encaje con tu forma de trabajar.
 
@@ -20,7 +20,7 @@ I'm **Alberto Martín**, a filmmaker and the creator of [IA para Filmmakers](htt
 
 As checked on **18 October 2026**, the particular Qwen Flash Next TensorFold recipe I follow documents a relevant limitation: image/video prompts **are not retained for prefix reuse**, so media-bearing turns process them again. See the [explicit upstream README statement](https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Single-DGX-Spark-TensorFold/blob/06df57f8a76c74fec908c87fdbc4dd702ff598f9/README.md#L330-L333) and the [serving patch's media exclusion from cache lookup](https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Single-DGX-Spark-TensorFold/blob/06df57f8a76c74fec908c87fdbc4dd702ff598f9/patches/0007-serving.patch#L68-L74). This is a statement about that pinned recipe, not every TensorFold version or its ability to understand images.
 
-For my audiovisual work I am evaluating **vLLM as a potentially more robust fit for this workflow**. This repository records the configuration, measurements, harness corrections and remaining unknowns. The [corrected visual tests](results-multimodal-cache-v2-2026-10-18.md) verified history follow-up and changed-image integrity, but **do not establish visual-encoder or media-cache reuse**. This is not a matched proof that vLLM is universally better than TensorFold. MTP6 has not been run.
+For my audiovisual work I am evaluating **vLLM as a potentially more robust fit for this workflow**. This repository records the configuration, measurements, harness corrections and remaining unknowns. The [corrected visual tests](results-multimodal-cache-v2-2026-10-18.md) verified history follow-up and changed-image integrity, but **do not establish visual-encoder or media-cache reuse**. This is not a matched proof that vLLM is universally better than TensorFold. The [repaired MTP3/MTP6 A/B](results-mtp6-ab-repair-2026-10-18.md) ran with three repetitions and byte-identical paired payloads; it did not retain MTP6 for this bounded workload.
 
 **Interested in applying AI to your audiovisual business?** My [practical 1:1 AI advisory and mentoring for filmmakers and small creative teams](https://www.iaparafilmmakers.es/?utm_source=github&utm_medium=referral&utm_campaign=qwen_fp4_gb10&utm_content=mentoring_en) starts with a real problem and a system that fits your workflow. The linked service details are in Spanish.
 
@@ -32,7 +32,7 @@ For my audiovisual work I am evaluating **vLLM as a potentially more robust fit 
 - [Event-driven long-history interactivity](results-interactivity-2026-10-18.md)
 - [Multimodal integrity: corrected v2](results-multimodal-cache-v2-2026-10-18.md)
 - [Earlier multimodal phase and correction notice](results-multimodal-cache-phase1-2026-10-18.md)
-- [Optimization research](optimization-research-2026-10-18.md) and [MTP6 status: not run](results-mtp6-admission-2026-10-18.md)
+- [Optimization research](optimization-research-2026-10-18.md), [MTP6 admission history](results-mtp6-admission-2026-10-18.md), and the [repaired MTP3/MTP6 A/B](results-mtp6-ab-repair-2026-10-18.md)
 
 Technical results and service links are separate: the tests are not a guarantee of client outcomes or endorsements from upstream authors.
 
@@ -109,4 +109,4 @@ The OCR image is a generated synthetic text fixture (`K7M4`), not a user's photo
 See `provenance.md`, `methodology.md`, `results.md`, `X-draft.md`, and `identity.json`.
 
 ## Latest bounded trial
-- [MTP3 vs MTP6 bounded A/B (2026-10-18)](results-mtp6-ab-2026-10-18.md) — MTP6 not retained; MTP3 active.
+- [Repaired MTP3 vs MTP6 A/B (2026-10-18)](results-mtp6-ab-repair-2026-10-18.md) — three matched repetitions per family; MTP6 not retained and MTP3 active. The earlier one-wave report is retained as [superseded audit history](results-mtp6-ab-2026-10-18.md).
