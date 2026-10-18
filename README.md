@@ -107,3 +107,6 @@ The OCR image is a generated synthetic text fixture (`K7M4`), not a user's photo
 - The pinned runtime includes vendor/community B12X modifications. Changing image digest, model export, driver, cache location, allocator, or flags invalidates equivalence; rerun the methodology.
 
 See `provenance.md`, `methodology.md`, `results.md`, `X-draft.md`, and `identity.json`.
+
+## Latest bounded trial
+- [MTP3 vs MTP6 bounded A/B (2026-10-18)](results-mtp6-ab-2026-10-18.md) — MTP6 not retained; MTP3 active.
