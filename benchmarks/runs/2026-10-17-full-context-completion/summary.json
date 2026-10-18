@@ -29,66 +29,152 @@
       "requests": 4,
       "prompt_tokens_per_request": 32768,
       "reserved_output_tokens": 512,
-      "completion_tokens_per_request": [512, 512, 512, 512],
-      "finish_reasons": ["length", "length", "length", "length"],
-      "ttft_visible_s_per_request": [30.857, 44.088, 52.9, 14.519],
-      "end_to_end_output_tps_per_request": [8.165, 8.091, 8.033, 8.273],
-      "approx_decode_tps_per_request": [16.045, 26.63, 47.143, 10.788],
+      "completion_tokens_per_request": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "finish_reasons": [
+        "length",
+        "length",
+        "length",
+        "length"
+      ],
+      "ttft_visible_s_per_request": [
+        30.857,
+        44.088,
+        52.9,
+        14.519
+      ],
+      "end_to_end_output_tps_per_request": [
+        8.165,
+        8.091,
+        8.033,
+        8.273
+      ],
+      "approx_decode_tps_per_request": [
+        16.045,
+        26.63,
+        47.143,
+        10.788
+      ],
       "aggregate_end_to_end_output_tps": 32.126,
       "wall_s": 63.749,
       "common_visible_decode_s": 8.985,
       "same_sample_full_residency_count": 43,
-      "scheduler_observation": "concurrent_decode_proven"
+      "scheduler_observation": "native four-running samples observed; common-decode alignment unqualified by historical relative-clock construction",
+      "historical_clock_alignment_qualified": false
     },
     {
       "name": "c2_198976",
-      "purpose": "salted 5/50/95% retrieval canary",
+      "purpose": "salted beginning/middle/tail retrieval canary; CANARY_95 was not at 95% depth",
       "requests": 2,
       "prompt_tokens_per_request": 198976,
       "reserved_output_tokens": 1024,
       "total_token_ceiling": 200000,
-      "completion_tokens_per_request": [80, 80],
-      "ttft_visible_s_per_request": [86.334, 168.952],
-      "end_to_end_output_tps_per_request": [0.656, 0.47],
-      "approx_decode_tps_per_request": [2.368, 70.067],
+      "completion_tokens_per_request": [
+        80,
+        80
+      ],
+      "ttft_visible_s_per_request": [
+        86.334,
+        168.952
+      ],
+      "end_to_end_output_tps_per_request": [
+        0.656,
+        0.47
+      ],
+      "approx_decode_tps_per_request": [
+        2.368,
+        70.067
+      ],
       "aggregate_end_to_end_output_tps": 0.94,
       "wall_s": 170.221,
       "semantic_requests_passed": 2,
-      "cached_tokens": [null, null],
+      "cached_tokens": [
+        null,
+        null
+      ],
       "scheduler_observation": "scheduler_managed_or_serialized; residency_not_proven"
     },
     {
       "name": "c3_198976",
-      "purpose": "salted 5/50/95% retrieval canary",
+      "purpose": "salted beginning/middle/tail retrieval canary; CANARY_95 was not at 95% depth",
       "requests": 3,
       "prompt_tokens_per_request": 198976,
       "reserved_output_tokens": 1024,
       "total_token_ceiling": 200000,
-      "completion_tokens_per_request": [75, 80, 80],
-      "ttft_visible_s_per_request": [86.083, 171.525, 253.643],
-      "end_to_end_output_tps_per_request": [0.634, 0.383, 0.314],
-      "approx_decode_tps_per_request": [2.3, 2.243, 69.272],
+      "completion_tokens_per_request": [
+        75,
+        80,
+        80
+      ],
+      "ttft_visible_s_per_request": [
+        86.083,
+        171.525,
+        253.643
+      ],
+      "end_to_end_output_tps_per_request": [
+        0.634,
+        0.383,
+        0.314
+      ],
+      "approx_decode_tps_per_request": [
+        2.3,
+        2.243,
+        69.272
+      ],
       "aggregate_end_to_end_output_tps": 0.922,
       "wall_s": 254.919,
       "semantic_requests_passed": 3,
-      "cached_tokens": [null, null, null],
+      "cached_tokens": [
+        null,
+        null,
+        null
+      ],
       "scheduler_observation": "scheduler_managed_or_serialized; residency_not_proven"
     },
     {
       "name": "c4_198976",
-      "purpose": "salted 5/50/95% retrieval canary",
+      "purpose": "salted beginning/middle/tail retrieval canary; CANARY_95 was not at 95% depth",
       "requests": 4,
       "prompt_tokens_per_request": 198976,
       "reserved_output_tokens": 1024,
       "total_token_ceiling": 200000,
-      "completion_tokens_per_request": [80, 75, 75, 80],
-      "ttft_visible_s_per_request": [258.024, 339.391, 172.363, 86.692],
-      "end_to_end_output_tps_per_request": [0.272, 0.22, 0.363, 0.663],
-      "approx_decode_tps_per_request": [2.21, 66.149, 2.175, 2.326],
+      "completion_tokens_per_request": [
+        80,
+        75,
+        75,
+        80
+      ],
+      "ttft_visible_s_per_request": [
+        258.024,
+        339.391,
+        172.363,
+        86.692
+      ],
+      "end_to_end_output_tps_per_request": [
+        0.272,
+        0.22,
+        0.363,
+        0.663
+      ],
+      "approx_decode_tps_per_request": [
+        2.21,
+        66.149,
+        2.175,
+        2.326
+      ],
       "aggregate_end_to_end_output_tps": 0.91,
       "wall_s": 340.52,
       "semantic_requests_passed": 4,
-      "cached_tokens": [null, null, null, null],
+      "cached_tokens": [
+        null,
+        null,
+        null,
+        null
+      ],
       "scheduler_observation": "scheduler_managed_or_serialized; residency_not_proven"
     }
   ],
@@ -96,6 +182,7 @@
     "full_context_admission_completed": "C2/C3/C4 all completed at 198976 prompt tokens per request with a 1024-token reserve.",
     "residency": "C2/C3/C4 did not yield two samples of all requested decoders in a common visible-decode interval. This is an observation limit, not a model, capacity, or safety failure.",
     "throughput": "Approximate decode TPS is not comparable to the short-canary values because streams were scheduler-managed/serialized and MTP/SSE chunking changes visible timing. Aggregate E2E TPS includes prefill.",
-    "scope": "Synthetic retrieval and bounded output workloads only; not a general-quality, MMLU, soak, or four-resident-context claim."
+    "scope": "Synthetic retrieval and bounded output workloads only; not a general-quality, MMLU, soak, or four-resident-context claim.",
+    "historical_fixture_audit": "CANARY_95 was at the tail, not 95%; recorded marker identifiers and measured token counts are unchanged."
   }
 }

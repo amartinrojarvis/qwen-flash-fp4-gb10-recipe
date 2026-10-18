@@ -13,7 +13,7 @@ Machine-readable evidence: [`benchmarks/runs/2026-10-17-long-context/summary.jso
 | Workload | Result | Exact prompt tokens/request | Reserved output | TTFT / request | Approx. decode tok/s / request | Aggregate E2E tok/s | Notes |
 |---|---:|---:|---:|---|---|---:|---|
 | C4, 32,768 | `RESIDENCY_NOT_PROVEN` | 32,768 | 256 | 31.259, 53.673, 14.723, 44.704 s | 3.34, 49.78, 2.17, 7.19 | 5.49 | All four streams completed, but their first/last visible intervals did not overlap; therefore this is not evidence of four simultaneous decoders. |
-| C1, 65,536 | `PASS` | 65,536 | 256 | 26.402 s | 64.51 | 2.79 | Salted canaries at 5/50/95% were recovered in order. |
+| C1, 65,536 | `PASS` | 65,536 | 256 | 26.402 s | 64.51 | 2.79 | Beginning/middle/tail canaries were recovered in order; see the fixture audit correction. |
 | C2, 65,536 | `RESIDENCY_NOT_PROVEN` | 65,536 | 256 | 53.766, 28.077 s | 58.42, 2.93 | 2.80 | Both completed with valid canaries; common visible decode interval was absent. |
 | C1, 198,000 | `PASS` | 198,000 | 1,024 | 83.637 s | 62.68 | 0.85 | Actual total was 198,072 (198,000 prompt + 72 generated), safely below 200,000. |
 
@@ -27,4 +27,8 @@ The initial ladder stopped after the C2 65,536 concurrency wave could not prove 
 
 ## Workload construction and limits
 
-Each lane was independently calibrated through `/tokenize`, salted at the beginning, and contained unique canaries at about 5%, 50%, and 95% of its prompt. The final query requested the markers without restating them. The response was graded locally after accepting either raw JSON or a fenced JSON object. This is a synthetic retrieval/ordering check, not MMLU, a general quality claim, or a long-duration stability test. Cache fields from the API were unavailable (`null`); native counter deltas are retained in the reports.
+Each lane was independently calibrated through `/tokenize`, salted at the beginning, and contained unique canaries near the beginning (~5%), middle (~50%), and tail of its prompt. The final query requested the markers without restating them. The response was graded locally after accepting either raw JSON or a fenced JSON object. This is a synthetic retrieval/ordering check, not MMLU, a general quality claim, or a long-duration stability test. Cache fields from the API were unavailable (`null`); native counter deltas are retained in the reports.
+
+## Fixture audit correction
+
+The historical marker named `CANARY_95` was actually placed after the final filler block, close to the prompt tail, not at 95% depth. Its identifier and recorded responses are preserved; its name must not be interpreted as a verified position. This is beginning/middle/tail retrieval evidence, and the last marker is easier to recover from the adjacent question.
