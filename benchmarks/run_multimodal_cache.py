@@ -19,7 +19,15 @@ photo=Path(__file__).with_name('fixtures')/'coco_cats_couch.jpg'
 def data(b): return 'data:image/png;base64,'+base64.b64encode(b).decode()
 def ih(b): return {'type':'image_url','image_url':{'url':data(b)}}
 def tx(s): return {'type':'text','text':s}
-def call(case,msgs,max_tokens=128,stream=False):
+def media_bytes(url, fetched=None):
+ if url.startswith('data:'):
+  return base64.b64decode(url.split(',',1)[1])
+ if fetched is not None and url in fetched:return fetched[url]
+ raise ValueError(f'no captured served bytes for non-data media URL: {url}')
+def ordered_media_hashes(msgs, fetched=None):
+ return [hashlib.sha256(media_bytes(p['image_url']['url'],fetched)).hexdigest() for m in msgs for p in (m.get('content') if isinstance(m.get('content'),list) else []) if p.get('type')=='image_url']
+def tx(s): return {'type':'text','text':s}
+def call(case,msgs,max_tokens=128,stream=False,fetched_media=None):
  body={'model':A.model,'messages':msgs,'temperature':0,'seed':17,'max_tokens':max_tokens,'chat_template_kwargs':{'enable_thinking':False}}
  started=time.monotonic_ns(); raw=[]; first=None; usage=None; finish=None; text=[]
  if stream:
@@ -42,35 +50,53 @@ def call(case,msgs,max_tokens=128,stream=False):
   with urllib.request.urlopen(req,timeout=180) as r:
    x=json.load(r); usage=x.get('usage'); finish=x['choices'][0]['finish_reason']; text=[x['choices'][0]['message'].get('content','')]
  end=time.monotonic_ns(); answer=''.join(text).strip()
- rec={'case':case,'request_sha256':hashlib.sha256(json.dumps(body,sort_keys=True).encode()).hexdigest(),'ordered_media_sha256':[hashlib.sha256(base64.b64decode(p['image_url']['url'].split(',',1)[1])).hexdigest() for m in msgs for p in (m.get('content') if isinstance(m.get('content'),list) else []) if p.get('type')=='image_url'],'answer':answer,'finish_reason':finish,'usage':usage,'start_mono_ns':started,'first_visible_mono_ns':first,'end_mono_ns':end,'ttft_ms':None if first is None else (first-started)/1e6,'e2e_ms':(end-started)/1e6,'raw_sse':raw if stream else None}
+ # Persist the raw response before metadata/hash/grading can fail.
+ raw_path=OUT/(case+'.raw.json'); raw_path.write_text(json.dumps({'answer':answer,'raw_sse':raw if stream else None},indent=2))
+ rec={'case':case,'request_sha256':hashlib.sha256(json.dumps(body,sort_keys=True).encode()).hexdigest(),'ordered_media_sha256':ordered_media_hashes(msgs,fetched_media),'answer':answer,'finish_reason':finish,'usage':usage,'start_mono_ns':started,'first_visible_mono_ns':first,'end_mono_ns':end,'ttft_ms':None if first is None else (first-started)/1e6,'e2e_ms':(end-started)/1e6,'raw_sse':raw if stream else None,'raw_response_file':raw_path.name}
  (OUT/(case+'.json')).write_text(json.dumps(rec,indent=2)); return rec
 
 def judge(r,need):
  ans=r['answer'].lower(); return {'finish_ok':r['finish_reason']=='stop','contains':{n:n.lower() in ans for n in need},'answer_sha256':hashlib.sha256(r['answer'].encode()).hexdigest()}
+def canonical_color(value):
+ v=str(value).strip().lower()
+ if v in {'rojo','red','azul','blue','verde','green'}: return {'rojo':'red','red':'red','azul':'blue','blue':'blue','verde':'green','green':'green'}[v]
+ if re.fullmatch(r'#[0-9a-f]{6}',v):
+  r,g,b=int(v[1:3],16),int(v[3:5],16),int(v[5:7],16)
+  return 'red' if r>g*1.35 and r>b*1.35 else ('blue' if b>r*1.25 and b>g*1.1 else ('green' if g>r*1.25 and g>b*1.1 else 'unknown'))
+ return 'unknown'
+def judge_order(r, expected):
+ try:
+  value=json.loads(r['answer']); got=[(canonical_color(x['color']),str(x['text']).replace(' ','')) for x in value]
+  return {'finish_ok':r['finish_reason']=='stop','exact_positions':got==expected,'got':got}
+ except Exception as error:return {'finish_ok':r['finish_reason']=='stop','exact_positions':False,'error':str(error)}
 
 results=[]
-def one(name,msgs,need,max_tokens=128,stream=False):
- r=call(name,msgs,max_tokens,stream); r['grade']=judge(r,need); results.append(r); return r
-question='Indica exactamente el color y el código visibles, sin inventar datos.'
-r1=one('01_exact_first',[{'role':'user','content':[tx(question),ih(red)]}],['rojo','73'])
-r2=one('01_exact_repeat',[{'role':'user','content':[tx(question),ih(red)]}],['rojo','73'])
+def one(name,msgs,need,max_tokens=128,stream=False,fetched_media=None,order_expected=None):
+ r=call(name,msgs,max_tokens,stream,fetched_media); r['grade']=judge_order(r,order_expected) if order_expected is not None else judge(r,need); results.append(r); return r
+question='Devuelve únicamente el texto impreso en la imagen, incluyendo las cifras; no devuelvas códigos de color.'
+r1=one('01_ocr_first',[{'role':'user','content':[tx(question),ih(red)]}],['rivera','73'])
+r2=one('01_ocr_repeat',[{'role':'user','content':[tx(question),ih(red)]}],['rivera','73'])
 # Actual assistant reply is retained on the wire; final user turn does not resend the image.
-h=[{'role':'user','content':[tx(question),ih(red)]},{'role':'assistant','content':r1['answer']},{'role':'user','content':'Ahora responde solamente el código de la misma foto.'}]
-r3=one('02_followup_history',h,['73'])
-r4=one('03_text_history_control',[{'role':'user','content':'Historia: el cartel anterior fue descrito como '+r1['answer']},{'role':'assistant','content':r1['answer']},{'role':'user','content':'Ahora responde solamente el código citado en la historia.'}],['73'])
-r5=one('04_replace_same_text',[{'role':'user','content':[tx(question),ih(blue)]}],['azul','41'])
-r6=one('06_order_red_blue',[{'role':'user','content':[tx('Da una lista en orden, una entrada por foto, con color y código.'),ih(red),ih(blue)]}],['rojo','73','azul','41'])
-r7=one('06_order_blue_red',[{'role':'user','content':[tx('Da una lista en orden, una entrada por foto, con color y código.'),ih(blue),ih(red)]}],['azul','41','rojo','73'])
-r8=one('06_replace_position',[{'role':'user','content':[tx('Da una lista en orden, una entrada por foto, con color y código.'),ih(red),ih(green)]}],['rojo','73','verde','92'])
+h=[{'role':'user','content':[tx(question),ih(red)]},{'role':'assistant','content':r1['answer']},{'role':'user','content':'Ahora devuelve únicamente el mismo texto impreso, incluyendo las cifras.'}]
+r3=one('02_followup_history',h,['rivera','73'])
+r4=one('03_text_history_control',[{'role':'user','content':'Historia: el cartel anterior fue descrito como '+r1['answer']},{'role':'assistant','content':r1['answer']},{'role':'user','content':'Ahora devuelve solamente el texto citado en la historia.'}],['rivera','73'])
+color_question='Indica exactamente el color y el código visibles, sin inventar datos.'
+r5=one('04_replace_same_text',[{'role':'user','content':[tx(color_question),ih(blue)]}],['azul','41'])
+order_question='Devuelve JSON estricto: [{"color":"...","text":"..."}] con una entrada por foto, en el mismo orden. No añadas texto.'
+r6=one('06_order_red_blue',[{'role':'user','content':[tx(order_question),ih(red),ih(blue)]}],[],order_expected=[('red','RIVERA73'),('blue','AZUL41')])
+r7=one('06_order_blue_red',[{'role':'user','content':[tx(order_question),ih(blue),ih(red)]}],[],order_expected=[('blue','AZUL41'),('red','RIVERA73')])
+r8=one('06_replace_position',[{'role':'user','content':[tx(order_question),ih(red),ih(green)]}],[],order_expected=[('red','RIVERA73'),('green','VERDE92')])
 # Same URL, changed served bytes: valid only if the engine reaches the local host server.
 class H(BaseHTTPRequestHandler):
- blob=red
- def do_GET(self): self.send_response(200); self.send_header('Content-Type','image/png'); self.send_header('Content-Length',str(len(self.blob))); self.end_headers(); self.wfile.write(self.blob)
+ blob=red; served=[]
+ def do_GET(self):
+  payload=self.blob; self.__class__.served.append({'path':self.path,'sha256':hashlib.sha256(payload).hexdigest(),'bytes':len(payload)}); self.send_response(200); self.send_header('Content-Type','image/png'); self.send_header('Content-Length',str(len(payload))); self.end_headers(); self.wfile.write(payload)
  def log_message(self,*x): pass
 srv=ThreadingHTTPServer(('localhost',18081),H); threading.Thread(target=srv.serve_forever,daemon=True).start()
-def urlmsg(): return [{'role':'user','content':[tx(question),{'type':'image_url','image_url':{'url':'http://localhost:18081/same.png'}}]}]
+def urlmsg(): return [{'role':'user','content':[tx(color_question),{'type':'image_url','image_url':{'url':'http://localhost:18081/same.png'}}]}]
 try:
- u1=one('05_same_url_red',urlmsg(),['rojo','73']); H.blob=blue; u2=one('05_same_url_blue',urlmsg(),['azul','41'])
+ u1=one('05_same_url_red',urlmsg(),['rojo','73'],fetched_media={'http://localhost:18081/same.png':red}); H.blob=blue; u2=one('05_same_url_blue',urlmsg(),['azul','41'],fetched_media={'http://localhost:18081/same.png':blue})
+ (OUT/'url-server-get-events.json').write_text(json.dumps(H.served,indent=2))
 except Exception as e: results.append({'case':'05_same_url_changed_bytes','status':'INCONCLUSIVE_BACKEND_CANNOT_REACH_HOST_LOCAL_URL','error':str(e)})
 finally: srv.shutdown()
 # Representative text+image history. Exact 32K is calibrated through the live endpoint only when supported.

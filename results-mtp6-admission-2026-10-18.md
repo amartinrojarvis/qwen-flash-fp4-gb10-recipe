@@ -14,6 +14,12 @@ No se fabricó una comparación A/B: habría sido inválida sin un candidato fí
 - El supervisor tiene `Restart=no`; no existe un candidato MTP6 aislado, un selector aprobado ni un guard restaurador MTP6 ya armado.
 - Crear el candidato mediante `docker exec`, modificar el script dentro del contenedor o editar manifiestos/controlador habría evitado la barrera de admisión, invalidado sus hashes y violado el requisito de usar el controlador físico probado. No se hizo.
 
+## Estado posterior: pausa para trabajo normal
+
+El requisito que faltaba era una ruta temporal sellada de candidato con guard y restauración independientes; no se demostró incompatibilidad de MTP6 con el motor o el hardware. El usuario autorizó el ensayo, pero se pausó antes de cualquier swap para permitir el trabajo normal. MTP3 no se detuvo y no hubo inferencia MTP6. La [v2 multimodal](results-multimodal-cache-v2-2026-10-18.md) corrige los dos defectos del evaluador de la primera fase. No hay comparación A/B ni mejora MTP6 que publicar todavía.
+
+The missing piece was guarded trial orchestration, not demonstrated MTP6 engine/hardware incompatibility. The authorized trial was paused before a swap so normal work could continue; MTP3 remained active. No MTP6 performance result exists.
+
 ## Línea base disponible
 
 La fase 1 publicada en el commit anterior aporta los fixtures legales, hashes privados, protocolos y métricas MTP3. No se usan los resultados sintéticos anteriores como un supuesto MTP6 ni se reclama mejora.

@@ -1,6 +1,6 @@
 # X drafts — NOT PUBLISHED
 
-The repository is private. Review asset licensing/provenance and explicitly approve public visibility before posting a link. Measurements are from this one GB10, not a model comparison.
+The repository is public following explicit owner approval and a publication audit. No X post has been sent. Model weights and the externally acquired template are not redistributed; review provenance and limitations before reuse. Measurements are from this one GB10, not a matched model comparison.
 
 ## Español
 

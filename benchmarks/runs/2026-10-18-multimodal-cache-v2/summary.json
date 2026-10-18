@@ -1,0 +1,424 @@
+{
+  "schema": 1,
+  "scope": "Corrected synthetic OCR/color integrity probes; no broad photography or media-cache qualification",
+  "case_count": 11,
+  "all_scoped_integrity_cases_passed": true,
+  "media_or_encoder_reuse_proven": false,
+  "reuse_status": "INCONCLUSIVE: no per-request cached-token or encoder metrics exposed",
+  "asset_sha256": {
+    "green.png": "88fb218a3d36b2d5b1601744ca02a33a022d8cad8b9f65f1c91731b2c07cff81",
+    "red.png": "5334a10d52a76c16f17ce79ad9efeb5c00ef5b2e487e2b33d492303fe96fbb2a",
+    "blue.png": "c27449b530b7d1cf59d00da8ba4152269257fd98363b786536161d65763dd325"
+  },
+  "same_url_served_bytes": [
+    {
+      "sha256": "5334a10d52a76c16f17ce79ad9efeb5c00ef5b2e487e2b33d492303fe96fbb2a",
+      "bytes": 16586
+    },
+    {
+      "sha256": "c27449b530b7d1cf59d00da8ba4152269257fd98363b786536161d65763dd325",
+      "bytes": 11956
+    }
+  ],
+  "results": [
+    {
+      "case": "01_ocr_first",
+      "status": "PASS",
+      "request_sha256": "ce3a579e2f65ce7ab6a1a0dfcc92ec820ed06653e1618c6ed8b8253c31766fd7",
+      "ordered_media_sha256": [
+        "5334a10d52a76c16f17ce79ad9efeb5c00ef5b2e487e2b33d492303fe96fbb2a"
+      ],
+      "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694",
+      "finish_reason": "stop",
+      "prompt_tokens": 513,
+      "completion_tokens": 7,
+      "ttft_ms": null,
+      "end_to_end_ms": 632.309789,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "contains": {
+          "rivera": true,
+          "73": true
+        },
+        "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694"
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "contains": {
+          "rivera": true,
+          "73": true
+        },
+        "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694"
+      },
+      "grade_revised_offline_without_inference": false
+    },
+    {
+      "case": "01_ocr_repeat",
+      "status": "PASS",
+      "request_sha256": "ce3a579e2f65ce7ab6a1a0dfcc92ec820ed06653e1618c6ed8b8253c31766fd7",
+      "ordered_media_sha256": [
+        "5334a10d52a76c16f17ce79ad9efeb5c00ef5b2e487e2b33d492303fe96fbb2a"
+      ],
+      "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694",
+      "finish_reason": "stop",
+      "prompt_tokens": 513,
+      "completion_tokens": 7,
+      "ttft_ms": null,
+      "end_to_end_ms": 256.977592,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "contains": {
+          "rivera": true,
+          "73": true
+        },
+        "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694"
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "contains": {
+          "rivera": true,
+          "73": true
+        },
+        "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694"
+      },
+      "grade_revised_offline_without_inference": false
+    },
+    {
+      "case": "02_followup_history",
+      "status": "PASS",
+      "request_sha256": "4a19f4698ac3e3650f016267205f10627171c2405adb2692674eec11faea8a00",
+      "ordered_media_sha256": [
+        "5334a10d52a76c16f17ce79ad9efeb5c00ef5b2e487e2b33d492303fe96fbb2a"
+      ],
+      "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694",
+      "finish_reason": "stop",
+      "prompt_tokens": 547,
+      "completion_tokens": 7,
+      "ttft_ms": null,
+      "end_to_end_ms": 357.57409,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "contains": {
+          "rivera": true,
+          "73": true
+        },
+        "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694"
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "contains": {
+          "rivera": true,
+          "73": true
+        },
+        "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694"
+      },
+      "grade_revised_offline_without_inference": false
+    },
+    {
+      "case": "03_text_history_control",
+      "status": "PASS",
+      "request_sha256": "b0a2ca085d26cff0d7932d4a4bf33457fb09d5d59b87554193d009f31beedbe4",
+      "ordered_media_sha256": [],
+      "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694",
+      "finish_reason": "stop",
+      "prompt_tokens": 59,
+      "completion_tokens": 7,
+      "ttft_ms": null,
+      "end_to_end_ms": 412.183991,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "contains": {
+          "rivera": true,
+          "73": true
+        },
+        "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694"
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "contains": {
+          "rivera": true,
+          "73": true
+        },
+        "answer_sha256": "e714617cb1918f991cbbe3bfb4d07912039307d8a85859caf51893481e133694"
+      },
+      "grade_revised_offline_without_inference": false
+    },
+    {
+      "case": "04_replace_same_text",
+      "status": "PASS",
+      "request_sha256": "05c7e31107aebcaadcdf6d5113e6c059df5a1fb32a31bb15029d0e3b8b643e0b",
+      "ordered_media_sha256": [
+        "c27449b530b7d1cf59d00da8ba4152269257fd98363b786536161d65763dd325"
+      ],
+      "answer_sha256": "e08addcd7a108d36212a3b206ef157b4ca2e745e6c6b656c469ef57b8eeaa39c",
+      "finish_reason": "stop",
+      "prompt_tokens": 505,
+      "completion_tokens": 45,
+      "ttft_ms": null,
+      "end_to_end_ms": 1094.989613,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "contains": {
+          "azul": true,
+          "41": true
+        },
+        "answer_sha256": "e08addcd7a108d36212a3b206ef157b4ca2e745e6c6b656c469ef57b8eeaa39c"
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "contains": {
+          "azul": true,
+          "41": true
+        },
+        "answer_sha256": "e08addcd7a108d36212a3b206ef157b4ca2e745e6c6b656c469ef57b8eeaa39c"
+      },
+      "grade_revised_offline_without_inference": false
+    },
+    {
+      "case": "06_order_red_blue",
+      "status": "PASS",
+      "request_sha256": "203fc3013faaa8fb870b3cb2c3eb87ccd5cc70fd5f2cc590106814935a257e58",
+      "ordered_media_sha256": [
+        "5334a10d52a76c16f17ce79ad9efeb5c00ef5b2e487e2b33d492303fe96fbb2a",
+        "c27449b530b7d1cf59d00da8ba4152269257fd98363b786536161d65763dd325"
+      ],
+      "answer_sha256": "5a7e0fb87afab97ece3228e2d91afeea2e4f0a6e9d9fb37a45a13d9606236672",
+      "finish_reason": "stop",
+      "prompt_tokens": 1001,
+      "completion_tokens": 41,
+      "ttft_ms": null,
+      "end_to_end_ms": 1485.194945,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "exact_positions": false,
+        "got": [
+          [
+            "#b31b1b",
+            "RIVERA73"
+          ],
+          [
+            "#1b44b3",
+            "AZUL41"
+          ]
+        ]
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "exact_positions": true,
+        "got": [
+          [
+            "red",
+            "RIVERA73"
+          ],
+          [
+            "blue",
+            "AZUL41"
+          ]
+        ]
+      },
+      "grade_revised_offline_without_inference": true
+    },
+    {
+      "case": "06_order_blue_red",
+      "status": "PASS",
+      "request_sha256": "854f3db14662afafa621af2c397df1a667f517c6016367a9ff60ae1460225447",
+      "ordered_media_sha256": [
+        "c27449b530b7d1cf59d00da8ba4152269257fd98363b786536161d65763dd325",
+        "5334a10d52a76c16f17ce79ad9efeb5c00ef5b2e487e2b33d492303fe96fbb2a"
+      ],
+      "answer_sha256": "ab3d351441c89433f25a41a7a321b12afc4b6231324ed52a09566b9df7e31bf2",
+      "finish_reason": "stop",
+      "prompt_tokens": 1001,
+      "completion_tokens": 41,
+      "ttft_ms": null,
+      "end_to_end_ms": 1429.354532,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "exact_positions": false,
+        "got": [
+          [
+            "#1440b8",
+            "AZUL41"
+          ],
+          [
+            "#c11a21",
+            "RIVERA73"
+          ]
+        ]
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "exact_positions": true,
+        "got": [
+          [
+            "blue",
+            "AZUL41"
+          ],
+          [
+            "red",
+            "RIVERA73"
+          ]
+        ]
+      },
+      "grade_revised_offline_without_inference": true
+    },
+    {
+      "case": "06_replace_position",
+      "status": "PASS",
+      "request_sha256": "0e8bb3a54557822dcae40876d5464bec9f61270ba8981f523f2fc78b8f35b7af",
+      "ordered_media_sha256": [
+        "5334a10d52a76c16f17ce79ad9efeb5c00ef5b2e487e2b33d492303fe96fbb2a",
+        "88fb218a3d36b2d5b1601744ca02a33a022d8cad8b9f65f1c91731b2c07cff81"
+      ],
+      "answer_sha256": "d03cd3a196a8906fc242d0237f6930365e1c56f502ffe97fe9eae51c6dfe9101",
+      "finish_reason": "stop",
+      "prompt_tokens": 1001,
+      "completion_tokens": 29,
+      "ttft_ms": null,
+      "end_to_end_ms": 1208.513419,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "exact_positions": false,
+        "got": [
+          [
+            "red",
+            "RIVERA73"
+          ],
+          [
+            "green",
+            "VERDE92"
+          ]
+        ]
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "exact_positions": true,
+        "got": [
+          [
+            "red",
+            "RIVERA73"
+          ],
+          [
+            "green",
+            "VERDE92"
+          ]
+        ]
+      },
+      "grade_revised_offline_without_inference": true
+    },
+    {
+      "case": "05_same_url_red",
+      "status": "PASS",
+      "request_sha256": "f05eb98de1aacc039269fac153ff552f9e6ebd5529e055620ff7e7ea3986942c",
+      "ordered_media_sha256": [
+        "5334a10d52a76c16f17ce79ad9efeb5c00ef5b2e487e2b33d492303fe96fbb2a"
+      ],
+      "answer_sha256": "e20cab7d9c5aa64278fc188d2ee98d3b72106c545f66cb299889fc630d727d87",
+      "finish_reason": "stop",
+      "prompt_tokens": 505,
+      "completion_tokens": 62,
+      "ttft_ms": null,
+      "end_to_end_ms": 1507.376981,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "contains": {
+          "rojo": true,
+          "73": true
+        },
+        "answer_sha256": "e20cab7d9c5aa64278fc188d2ee98d3b72106c545f66cb299889fc630d727d87"
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "contains": {
+          "rojo": true,
+          "73": true
+        },
+        "answer_sha256": "e20cab7d9c5aa64278fc188d2ee98d3b72106c545f66cb299889fc630d727d87"
+      },
+      "grade_revised_offline_without_inference": false
+    },
+    {
+      "case": "05_same_url_blue",
+      "status": "PASS",
+      "request_sha256": "f05eb98de1aacc039269fac153ff552f9e6ebd5529e055620ff7e7ea3986942c",
+      "ordered_media_sha256": [
+        "c27449b530b7d1cf59d00da8ba4152269257fd98363b786536161d65763dd325"
+      ],
+      "answer_sha256": "e08addcd7a108d36212a3b206ef157b4ca2e745e6c6b656c469ef57b8eeaa39c",
+      "finish_reason": "stop",
+      "prompt_tokens": 505,
+      "completion_tokens": 45,
+      "ttft_ms": null,
+      "end_to_end_ms": 1106.062821,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "contains": {
+          "azul": true,
+          "41": true
+        },
+        "answer_sha256": "e08addcd7a108d36212a3b206ef157b4ca2e745e6c6b656c469ef57b8eeaa39c"
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "contains": {
+          "azul": true,
+          "41": true
+        },
+        "answer_sha256": "e08addcd7a108d36212a3b206ef157b4ca2e745e6c6b656c469ef57b8eeaa39c"
+      },
+      "grade_revised_offline_without_inference": false
+    },
+    {
+      "case": "07_long_history_visual",
+      "status": "PASS",
+      "request_sha256": "9289afc09b60b8b937735e8c4046b36e0e6de0e09808a4d751e22945c0af63e4",
+      "ordered_media_sha256": [
+        "88fb218a3d36b2d5b1601744ca02a33a022d8cad8b9f65f1c91731b2c07cff81"
+      ],
+      "answer_sha256": "babf579fc3ab90e0ef0f32e495d446cda26d378c9b41ed0af349b52e8419becf",
+      "finish_reason": "stop",
+      "prompt_tokens": 32226,
+      "completion_tokens": 13,
+      "ttft_ms": 3258.986994,
+      "end_to_end_ms": 3556.934008,
+      "api_cached_tokens": null,
+      "captured_grade": {
+        "finish_ok": true,
+        "contains": {
+          "verde": true,
+          "92": true
+        },
+        "answer_sha256": "babf579fc3ab90e0ef0f32e495d446cda26d378c9b41ed0af349b52e8419becf"
+      },
+      "offline_grade": {
+        "finish_ok": true,
+        "contains": {
+          "verde": true,
+          "92": true
+        },
+        "answer_sha256": "babf579fc3ab90e0ef0f32e495d446cda26d378c9b41ed0af349b52e8419becf"
+      },
+      "grade_revised_offline_without_inference": false
+    }
+  ],
+  "historical_corrections": [
+    "Original code question was ambiguous between OCR and hexadecimal color. A new explicit printed-text fixture was executed; the old response is not classified as proven cache failure.",
+    "Original URL probe crashed in URL-versus-data-URI metadata parsing after inference; this did not establish backend network failure.",
+    "Three positional answers were regraded offline with explicit color encoding equivalence; no new inference was used for the grader-only correction."
+  ],
+  "limits": [
+    "Nonstream TTFT is unknown, not equal to total duration.",
+    "Long-history image-at-tail response does not prove retained long media-bearing-prefix reuse.",
+    "MTP6 remains NOT_RUN and paused for normal work."
+  ]
+}

@@ -2,6 +2,10 @@
 
 **Ámbito.** Ejecución directa contra el backend local `vllmcritic`, MTP3, ventana total de 200k y cuatro slots. Los artefactos SSE/JSON completos permanecen privados: contienen respuestas y marcas temporales de la máquina. Este documento publica sólo resultados agregados y hashes de fixture.
 
+## Corrección posterior verificada
+
+Ver [las mediciones v2](results-multimodal-cache-v2-2026-10-18.md). La interpretación de red del error de URL original queda retirada: el registrador confundía HTTP URLs con data URIs. La pregunta de seguimiento original era ambigua entre texto impreso y código hexadecimal del color; no se atribuye ese resultado a pérdida de caché. La v2 ejecutada completa seguimiento OCR y URL mutable correctamente. Los datos originales se conservan como histórico.
+
 ## Integridad multimodal
 
 Se generaron tres PNG legales y deterministas (fondo de color y texto OCR de alto contraste), y se enviaron como `data:` bytes en solicitudes reales. No se descargaron imágenes ni se usó otro modelo de visión.
